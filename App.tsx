@@ -14,8 +14,12 @@ const App: React.FC = () => {
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+<<<<<<< HEAD
   // FIX: Use ReturnType<typeof setInterval> for the correct interval ID type in browser environments.
   const transcriptionIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+=======
+  const transcriptionIntervalRef = useRef<NodeJS.Timeout | null>(null);
+>>>>>>> 23a2e0453c576aa0e340ffea08e472967f909a5a
   const isProcessingFrame = useRef<boolean>(false);
   const streamRef = useRef<MediaStream | null>(null);
 
@@ -115,11 +119,14 @@ const App: React.FC = () => {
     }
   }, [status, cleanup, startTranscription]);
 
+<<<<<<< HEAD
   const handleClearTranscription = () => {
     setTranscription('');
     setLastRecognizedGesture('');
   };
 
+=======
+>>>>>>> 23a2e0453c576aa0e340ffea08e472967f909a5a
   const getButtonState = () => {
     switch (status) {
       case AppStatus.IDLE:
@@ -204,6 +211,7 @@ const App: React.FC = () => {
                 <strong>Error:</strong> {error}
             </div>
         )}
+<<<<<<< HEAD
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <button
             onClick={handleToggleCamera}
@@ -221,6 +229,15 @@ const App: React.FC = () => {
             Clear
           </button>
         </div>
+=======
+        <button
+          onClick={handleToggleCamera}
+          disabled={buttonState.disabled}
+          className={`px-8 py-4 w-full sm:w-auto text-xl font-bold text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-offset-gray-900 ${buttonState.color} ${buttonState.disabled ? 'cursor-not-allowed opacity-60' : ''}`}
+        >
+          {buttonState.text}
+        </button>
+>>>>>>> 23a2e0453c576aa0e340ffea08e472967f909a5a
       </footer>
       
       <canvas ref={canvasRef} className="hidden"></canvas>
